@@ -1,7 +1,7 @@
-# SimpleFacebookAuth
-Facebook authentication with ASP.NET Web Forms-VB.Net using Facebook C# SDK
+# Simple Facebook Authentication
+A basic Facebook Authentication app built on ASP.Net WebForms and VB.Net using Facebook C# SDK
 
-###Please read carefully before using this solution:
+### Please read carefully before using the solution:
 
 Create a new app using https://developers.facebook.com/apps
 
