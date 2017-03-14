@@ -3,7 +3,6 @@ Imports Facebook
 
 '<a rel = "license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br /><span xmlns:dct = "http://purl.org/dc/terms/" Property="dct:title">Simple Facebook Authentication</span> by <a xmlns:cc = "http://creativecommons.org/ns#" href="https://www.linkedin.com/in/jalugo/" Property="cc:attributionName" rel="cc:attributionURL">Jose Alejandro Lugo Garcia</a> Is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br />Based On a work at <a xmlns:dct = "http://purl.org/dc/terms/" href="https://github.com/jlugooi/SimpleFacebookAuth" rel="dct:source">https://github.com/jlugooi/SimpleFacebookAuth</a>.
 
-
 Public Class Authenticated_User
     Inherits System.Web.UI.Page
 
@@ -45,7 +44,7 @@ Public Class Authenticated_User
                     If oauthResult.IsSuccess Then
                         Session("Authenticated") = True
                         'Setting Logout button visible
-                        Button2.Visible = True
+                        LogoutBtn.Visible = True
 
                         'Getting basic user info from Facebook
                         fb = New FacebookClient(CType(Session.Item("user_Access_Token"), String))
@@ -65,7 +64,7 @@ Public Class Authenticated_User
                         'User was not authenticated
                         Session("Authenticated") = False
                         'Setting Logout button hidden
-                        Button2.Visible = False
+                        LogoutBtn.Visible = False
                     End If
 
                 End If
@@ -80,7 +79,7 @@ Public Class Authenticated_User
 
     End Sub
 
-    Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Protected Sub LogoutBtn_Click(sender As Object, e As EventArgs) Handles LogoutBtn.Click
 
         Dim logout_uri = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath
         Dim logoutUrl = fb.GetLogoutUrl(New With {
@@ -91,5 +90,6 @@ Public Class Authenticated_User
         Session("Authenticated") = False
 
         Response.Redirect(logoutUrl.ToString())
+
     End Sub
 End Class

@@ -41,11 +41,11 @@ Partial Public Class Authenticated_User
     Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Button2 control.
+    '''LogoutBtn control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents LogoutBtn As Global.System.Web.UI.WebControls.Button
 End Class

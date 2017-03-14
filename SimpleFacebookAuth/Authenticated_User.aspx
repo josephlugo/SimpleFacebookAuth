@@ -16,7 +16,7 @@
     </p>
 
     <p>
-        <asp:Button ID="Button2" runat="server" CssClass="btn btn-primary btn-lg" Text="Logout" Visible="False" />
+        <asp:Button ID="LogoutBtn" runat="server" CssClass="btn btn-primary btn-lg" Text="Logout" Visible="False" />
     </p>
 
 </asp:Content>
