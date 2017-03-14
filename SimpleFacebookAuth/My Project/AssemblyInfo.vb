@@ -7,11 +7,11 @@ Imports System.Runtime.InteropServices
 ' associated with an assembly.
 
 ' Review the values of the assembly attributes
-<Assembly: AssemblyTitle("SimpleFacebookAuth")>
-<Assembly: AssemblyDescription("Demonstrates facebook auth flow using Facebook DLL")>
-<Assembly: AssemblyCompany("OwnInitiative")>
+<Assembly: AssemblyTitle("Simple Facebook Authentication")>
+<Assembly: AssemblyDescription("A basic Facebook Authentication app built on ASP.Net WebForms and VB.Net using Facebook C# SDK")>
+<Assembly: AssemblyCompany("Own Initiative LLC")>
 <Assembly: AssemblyProduct("SimpleFacebookAuth")>
-<Assembly: AssemblyCopyright("Copyright © OwnInitiative 2017")>
+<Assembly: AssemblyCopyright("Copyright © Own Initiative 2017")>
 <Assembly: AssemblyTrademark("OwnInitiative")>
 
 <Assembly: ComVisible(False)>
