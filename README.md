@@ -19,4 +19,5 @@ App domains: Type the website domain (Ex. www.mywebsite.com)
 Valid OAuth redirect URIs: Usually, two URLs must be provided:
 
 First one for the redirect login page, (Ex. http://www.mywebsite.com/Authenticated_User)
+
 The second one for the redirect page once user logged off (Ex. http://www.mywebsite.com/)
