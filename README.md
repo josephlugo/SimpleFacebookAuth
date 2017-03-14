@@ -1,7 +1,7 @@
 # SimpleFacebookAuth
 Facebook authentication with ASP.NET Web Forms-VB.Net using Facebook C# SDK
 
-#Please read this before using this solution:
+##Please read this before using this solution:
 
 1- Create a new app using https://developers.facebook.com/apps
 2- Go to web.config and copy the APP ID and APP secret under the correspondent <appSettings> tag.
