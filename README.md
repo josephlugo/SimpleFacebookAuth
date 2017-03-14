@@ -11,10 +11,12 @@ Go to the web.config file under SimpleFacebookAuth folder. Copy the generated AP
 * Once the new Facebook app has been created, on your Facebook app dashboard, go to Settings:
 
 Site URL: Type the base URL of your website (Ex. http://www.mywebsite.com)
+
 App domains: Type the website domain (Ex. www.mywebsite.com)
 
 * Add new Product, select Facebook Login.
 
 Valid OAuth redirect URIs: Usually, two URLs must be provided:
+
 First one for the redirect login page, (Ex. http://www.mywebsite.com/Authenticated_User)
-the second one for the redirect page once user logged off (Ex. http://www.mywebsite.com/)
+The second one for the redirect page once user logged off (Ex. http://www.mywebsite.com/)
