@@ -5,6 +5,10 @@
     </p>   
     <p>
         &nbsp;<asp:Label ID="Label3" runat="server" Text="Label" Visible="False"></asp:Label>
+    </p>
+    
+     <p>
+         <asp:Image ID="Image1" runat="server" />
     </p>   
         
     <p>
@@ -13,10 +17,11 @@
    
     <p>
         <asp:Label ID="Label2" runat="server" Text="Label" Visible="False"></asp:Label>
-    </p>
+    </p>   
 
     <p>
         <asp:Button ID="LogoutBtn" runat="server" CssClass="btn btn-primary btn-lg" Text="Logout" Visible="False" />
     </p>
+     
 
 </asp:Content>

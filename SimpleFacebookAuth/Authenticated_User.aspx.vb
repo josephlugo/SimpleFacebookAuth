@@ -36,6 +36,7 @@ Public Class Authenticated_User
                 Session("user_Access_Token") = result2.access_token
 
                 Dim oauthResult As FacebookOAuthResult
+                Dim UserID As String
                 Dim MyName As String
                 Dim MyEmail As String
 
@@ -49,6 +50,7 @@ Public Class Authenticated_User
                         'Getting basic user info from Facebook
                         fb = New FacebookClient(CType(Session.Item("user_Access_Token"), String))
                         Dim details1 = fb.Get("me")
+                        UserID = details1.id
                         MyName = details1.name
                         Dim details2 = fb.Get("/me?fields=email")
                         MyEmail = details2.email
@@ -59,6 +61,10 @@ Public Class Authenticated_User
                         Label3.Text = "Congratulations. You are authenticated!"
                         Label1.Text = "Welcome: " + MyName + "!"
                         Label2.Text = "Your email: " + MyEmail
+
+                        Dim profilePictureUri As Uri = New Uri(String.Format("https://graph.facebook.com/{0}/picture?type={1}&access_token={2}", UserID, "large", CType(Session.Item("user_Access_Token"), String)))
+
+                        Image1.ImageUrl = profilePictureUri.ToString()
 
                     Else
                         'User was not authenticated
