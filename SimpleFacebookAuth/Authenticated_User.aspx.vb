@@ -62,6 +62,7 @@ Public Class Authenticated_User
                         Label1.Text = "Welcome: " + MyName + "!"
                         Label2.Text = "Your email: " + MyEmail
 
+                        'Getting profile picture
                         Dim profilePictureUri As Uri = New Uri(String.Format("https://graph.facebook.com/{0}/picture?type={1}&access_token={2}", UserID, "large", CType(Session.Item("user_Access_Token"), String)))
 
                         Image1.ImageUrl = profilePictureUri.ToString()
