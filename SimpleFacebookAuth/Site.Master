@@ -63,7 +63,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p class="text-center">&copy; <%: DateTime.Now.Year %> - Simple Facebook Authentication</p>
             </footer>
         </div>
 
