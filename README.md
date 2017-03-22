@@ -1,5 +1,5 @@
 # Simple Facebook Authentication
-A basic Facebook Authentication app built on ASP.Net WebForms and VB.Net using Facebook C# SDK
+A basic Facebook authentication app built on ASP.Net, WebForms and VB.Net using Facebook C# SDK
 
 ### Please read carefully before using the solution:
 
