@@ -27,3 +27,17 @@ textarea {
         padding: 0;
     }
 }
+
+/*Adjustment for Lead Action section*/
+.jumbotron {
+  padding: 30px; 
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 2.1428571435;
+  color: inherit;
+  background-color: #B9D7E2;  /*cheked for WCAG (Web Content Accessibility Guidelines) compliance*/
+  text-align: center;
+}
+
