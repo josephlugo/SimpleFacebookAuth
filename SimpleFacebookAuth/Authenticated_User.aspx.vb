@@ -22,7 +22,6 @@ Public Class Authenticated_User
             'app_Access_Token = result1.access_token
 
             'If the user gained access putting the right credentials, then it should get an authorization code
-            'Checking if the authorization code is on the URL:
             If Not (String.IsNullOrEmpty(Request.QueryString("code"))) Then
 
                 'Using the authorization code to get the user access token
@@ -77,7 +76,7 @@ Public Class Authenticated_User
                 End If
 
             Else
-                'If user don't had access to the page through a valid auth flow, trigger a page error access
+                'If the user don't have access to the page through a valid auth flow, trigger a page error access
                 Label1.Visible = True
                 Label1.Text = "ACCESS DENIED! You haven't followed the proper authentication flow."
             End If
