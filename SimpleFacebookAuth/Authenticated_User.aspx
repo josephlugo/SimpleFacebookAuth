@@ -26,16 +26,13 @@
              </p>  
 
              <p class="text-center">
-                <asp:TextBox ID="lbStatus" runat="server" Height="69px" Visible="False" Width="279px"></asp:TextBox>
+                <asp:TextBox ID="lbStatus" runat="server" Height="69px" Visible="False" Width="279px" TextMode="MultiLine"></asp:TextBox>
              </p>
 
              <p class="text-center">                 
                  <asp:Label ID="Label5" runat="server" Text="Photo: " style="font-weight: 700" Visible="False"></asp:Label>
-             </p>
-
-            <div style="text-align: center; margin-left: auto; margin-right: auto">
-                <asp:FileUpload ID="FileUpload1" runat="server" Visible="False" accept=".jpg, .jpeg"/>
-            </div> 
+                 <asp:FileUpload ID="FileUpload1" runat="server" Visible="False" accept=".jpg, .jpeg"/>
+             </p>          
 
              <p class="text-center">                 
              </p>

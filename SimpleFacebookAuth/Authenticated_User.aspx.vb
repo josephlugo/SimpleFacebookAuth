@@ -114,6 +114,7 @@ Public Class Authenticated_User
 
         If (FileUpload1.HasFile) Then
 
+            'Saving the photo to upload temporarily in /Content/Pictures
             photoPath = Path.Combine(Server.MapPath("~/Content/Pictures"), FileUpload1.FileName)
             FileUpload1.SaveAs(photoPath)
 
