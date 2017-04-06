@@ -108,20 +108,6 @@ Public Class Authenticated_User
         FileUpload1.Visible = False
     End Sub
 
-    Protected Sub LogoutBtn_Click(sender As Object, e As EventArgs) Handles LogoutBtn.Click
-
-        Dim logout_uri = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath
-        Dim logoutUrl = fb.GetLogoutUrl(New With {
-            Key .access_token = Session("user_Access_Token"),
-            Key .[next] = logout_uri.ToString()
-        })
-
-        Session("Authenticated") = False
-
-        Response.Redirect(logoutUrl.ToString())
-
-    End Sub
-
     Protected Sub PostBtn_Click(sender As Object, e As EventArgs) Handles PostBtn.Click
 
         Dim photoPath As String = Nothing
@@ -184,6 +170,20 @@ Public Class Authenticated_User
                 }.SetValue(stream)
             })
         End Using
+
+    End Sub
+
+    Protected Sub LogoutBtn_Click(sender As Object, e As EventArgs) Handles LogoutBtn.Click
+
+        Dim logout_uri = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath
+        Dim logoutUrl = fb.GetLogoutUrl(New With {
+            Key .access_token = Session("user_Access_Token"),
+            Key .[next] = logout_uri.ToString()
+        })
+
+        Session("Authenticated") = False
+
+        Response.Redirect(logoutUrl.ToString())
 
     End Sub
 
