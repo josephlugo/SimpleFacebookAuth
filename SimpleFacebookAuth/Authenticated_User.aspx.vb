@@ -94,7 +94,6 @@ Public Class Authenticated_User
         lbStatus.Visible = True
         PostBtn.Visible = True
         Image1.Visible = True
-        FileUpload1.Visible = True
     End Sub
 
     Private Sub HidePageDetails()
@@ -105,7 +104,6 @@ Public Class Authenticated_User
         lbStatus.Visible = False
         PostBtn.Visible = False
         Image1.Visible = False
-        FileUpload1.Visible = False
     End Sub
 
     Protected Sub PostBtn_Click(sender As Object, e As EventArgs) Handles PostBtn.Click
@@ -188,4 +186,7 @@ Public Class Authenticated_User
 
     End Sub
 
+    Protected Sub BrBtn_Click(sender As Object, e As EventArgs) Handles BrBtn.Click
+
+    End Sub
 End Class

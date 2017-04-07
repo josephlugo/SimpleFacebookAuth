@@ -30,13 +30,15 @@
              </p>
 
              <p class="text-center">                 
-                 <asp:Label ID="Label5" runat="server" Text="Photo: " style="font-weight: 700" Visible="False"></asp:Label>
-                 <asp:FileUpload ID="FileUpload1" runat="server" Visible="False" accept=".jpg, .jpeg"/>
-             </p>          
+                 <asp:Label ID="Label5" runat="server" Text="Photo: " style="font-weight: 700" Visible="False"></asp:Label>                 
+                 <asp:FileUpload ID="FileUpload1" runat="server" onchange="showFileName(this)" Style="display: none" accept=".jpg, .jpeg"/>
+                 <asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default"></asp:TextBox>
+                 <asp:Button ID="BrBtn" runat="server" Text="Browse" CssClass="btn btn-default" OnClientClick="showBrowseDialog()" />                
+             </p>  
 
-             <p class="text-center">                 
+             <p class="text-center">                
              </p>
-             
+
              <p class="text-center">
                  <asp:Button ID="PostBtn" runat="server" CssClass="btn btn-default" Text="Post" Visible="False" Width="100px" />
              </p> 
@@ -48,4 +50,19 @@
             </p>
         </div>        
     </div>    
+
+    <script type="text/javascript">
+
+        function showBrowseDialog() {
+        var fileuploadctrl = document.getElementById('<%= FileUpload1.ClientID %>');
+        fileuploadctrl.click();
+    }
+
+        function showFileName(oFile) {
+           document.getElementById('<%=TextBox1.ClientID%>').value = oFile.value
+        }
+
+    </script>
+       
 </asp:Content>
+

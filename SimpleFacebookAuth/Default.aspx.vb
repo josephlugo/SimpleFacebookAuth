@@ -34,7 +34,7 @@ Public Class _Default
         Dim facebookAppId = ConfigurationManager.AppSettings("FacebookAppId").ToString()
         Dim extendedPermissions = ConfigurationManager.AppSettings("FacebookScope").ToString()
 
-        Session("redirect_Uri") = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "/Authenticated_User.aspx"
+        Session("redirect_Uri") = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "Authenticated_User.aspx"
 
         'Response_type: an access token (token), an authorization code (code), or both (code token).
         'List of additional display modes can be found at http://developers.facebook.com/docs/reference/dialogs/#display
