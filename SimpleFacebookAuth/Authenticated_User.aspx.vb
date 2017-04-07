@@ -186,7 +186,4 @@ Public Class Authenticated_User
 
     End Sub
 
-    Protected Sub BrBtn_Click(sender As Object, e As EventArgs) Handles BrBtn.Click
-
-    End Sub
 End Class

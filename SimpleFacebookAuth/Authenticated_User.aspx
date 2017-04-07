@@ -30,10 +30,9 @@
              </p>
 
              <p class="text-center">                 
-                 <asp:Label ID="Label5" runat="server" Text="Photo: " style="font-weight: 700" Visible="False"></asp:Label>                 
-                 <asp:FileUpload ID="FileUpload1" runat="server" onchange="showFileName(this)" Style="display: none" accept=".jpg, .jpeg"/>
-                 <asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default"></asp:TextBox>
-                 <asp:Button ID="BrBtn" runat="server" Text="Browse" CssClass="btn btn-default" OnClientClick="showBrowseDialog()" />                
+                 <asp:Label ID="Label5" runat="server" Text="Photo: " style="font-weight: 700" Visible="False"></asp:Label>                                  
+                 <asp:FileUpload ID="FileUpload1" runat="server" Style="display:table-row " accept=".jpg, .jpeg" CssClass="btn btn-default"/>
+                
              </p>  
 
              <p class="text-center">                
@@ -49,20 +48,7 @@
                 <asp:Button ID="LogoutBtn" runat="server" CssClass="btn btn-primary btn-lg" Text="Logout" Visible="False" />
             </p>
         </div>        
-    </div>    
-
-    <script type="text/javascript">
-
-        function showBrowseDialog() {
-        var fileuploadctrl = document.getElementById('<%= FileUpload1.ClientID %>');
-        fileuploadctrl.click();
-    }
-
-        function showFileName(oFile) {
-           document.getElementById('<%=TextBox1.ClientID%>').value = oFile.value
-        }
-
-    </script>
+    </div>        
        
 </asp:Content>
 
