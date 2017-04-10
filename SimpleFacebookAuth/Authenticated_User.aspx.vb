@@ -1,6 +1,7 @@
 ﻿Imports System.Dynamic
 Imports System.IO
 Imports Facebook
+Imports Newtonsoft.Json.Linq
 
 '<a rel = "license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br /><span xmlns:dct = "http://purl.org/dc/terms/" Property="dct:title">Simple Facebook Authentication</span> by <a xmlns:cc = "http://creativecommons.org/ns#" href="https://www.linkedin.com/in/jalugo/" Property="cc:attributionName" rel="cc:attributionURL">Jose Alejandro Lugo Garcia</a> Is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br />Based On a work at <a xmlns:dct = "http://purl.org/dc/terms/" href="https://github.com/jlugooi/SimpleFacebookAuth" rel="dct:source">https://github.com/jlugooi/SimpleFacebookAuth</a>.
 
@@ -65,6 +66,25 @@ Public Class Authenticated_User
                         Dim profilePictureUri As Uri = New Uri(String.Format("https://graph.facebook.com/{0}/picture?type={1}&access_token={2}", UserID, "large", CType(Session.Item("user_Access_Token"), String)))
 
                         Image1.ImageUrl = profilePictureUri.ToString()
+
+                        'Getting friend list 
+                        'In order for a person to show up in one person's friend list, both people must
+                        'have decided to share their list of friends with your app And Not disabled that
+                        'permission during login. Also both friends must have been asked for user_friends
+                        'during the login process.
+                        'More info at: https://developers.facebook.com/docs/facebook-login/permissions#reference-user_friends
+
+                        Dim friendListData = fb.Get("/me/friends")
+
+                        Dim friendListJson As JObject = JObject.Parse(friendListData.ToString())
+                        Dim fbUsers As New List(Of FbUser)()
+
+                        For Each var In friendListJson("data").Children()
+                            Dim fbUser As New FbUser()
+                            fbUser.Id = var("id").ToString().Replace("""", "")
+                            fbUser.Name = var("name").ToString().Replace("""", "")
+                            fbUsers.Add(fbUser)
+                        Next
 
                     Else
                         'User was not authenticated
