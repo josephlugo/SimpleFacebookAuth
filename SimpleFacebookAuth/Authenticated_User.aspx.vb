@@ -94,6 +94,7 @@ Public Class Authenticated_User
         lbStatus.Visible = True
         PostBtn.Visible = True
         Image1.Visible = True
+        FileUpload1.Visible = True
     End Sub
 
     Private Sub HidePageDetails()
@@ -104,6 +105,7 @@ Public Class Authenticated_User
         lbStatus.Visible = False
         PostBtn.Visible = False
         Image1.Visible = False
+        FileUpload1.Visible = False
     End Sub
 
     Protected Sub PostBtn_Click(sender As Object, e As EventArgs) Handles PostBtn.Click
@@ -173,6 +175,11 @@ Public Class Authenticated_User
     End Sub
 
     Protected Sub LogoutBtn_Click(sender As Object, e As EventArgs) Handles LogoutBtn.Click
+
+        'Cleaning temporary uploaded pictures from server
+        If (Directory.GetFiles(Server.MapPath("~/Content/Pictures")).Length > 0) Then
+            Array.ForEach(Directory.GetFiles(Server.MapPath("~/Content/Pictures")), Sub(x) File.Delete(x))
+        End If
 
         Dim logout_uri = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath
         Dim logoutUrl = fb.GetLogoutUrl(New With {

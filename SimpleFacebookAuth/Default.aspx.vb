@@ -1,4 +1,5 @@
 ﻿Imports System.Dynamic
+Imports System.IO
 Imports Facebook
 
 'Please read carefully before using the solution:
@@ -35,10 +36,10 @@ Public Class _Default
         Dim extendedPermissions = ConfigurationManager.AppSettings("FacebookScope").ToString()
 
         'Use this line when publish to IIS
-        Session("redirect_Uri") = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "/Authenticated_User.aspx"
+        'Session("redirect_Uri") = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "/Authenticated_User.aspx"
 
         'Use this line when test locally with IIS express
-        'Session("redirect_Uri") = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "Authenticated_User.aspx"
+        Session("redirect_Uri") = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "Authenticated_User.aspx"
 
         'Response_type: an access token (token), an authorization code (code), or both (code token).
         'List of additional display modes can be found at http://developers.facebook.com/docs/reference/dialogs/#display
@@ -55,6 +56,11 @@ Public Class _Default
     End Sub
 
     Protected Sub LogoutBtn_Click(sender As Object, e As EventArgs) Handles LogoutBtn.Click
+
+        'Cleaning temporary uploaded pictures from server
+        If (Directory.GetFiles(Server.MapPath("~/Content/Pictures")).Length > 0) Then
+            Array.ForEach(Directory.GetFiles(Server.MapPath("~/Content/Pictures")), Sub(x) File.Delete(x))
+        End If
 
         Dim logout_uri = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath
         Dim logoutUrl = _fb.GetLogoutUrl(New With {
