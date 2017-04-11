@@ -30,13 +30,21 @@
              </p>
 
              <p class="text-center">                 
-                 <asp:Label ID="Label5" runat="server" Text="Photo: " style="font-weight: 700" Visible="False"></asp:Label>                                  
-                 <asp:FileUpload ID="FileUpload1" runat="server" Style="display:table-row " accept=".jpg, .jpeg" CssClass="btn btn-default"/>
-                
+                 <asp:Label ID="Label5" runat="server" Text="Photo: (8 Mb max)" style="font-weight: 700" Visible="False"></asp:Label>                                                                    
+             </p>
+              
+             <p class="text-center">                 
+                 
              </p>  
 
-             <p class="text-center">                
-             </p>
+             <p class="text-center">                                  
+                 <asp:FileUpload ID="FileUpload1" runat="server" accept=".jpg, .jpeg" CssClass="btn btn-default fileUploadMargin"/>
+             </p>  
+           
+
+            <p class="text-center">
+                                 
+             </p> 
 
              <p class="text-center">
                  <asp:Button ID="PostBtn" runat="server" CssClass="btn btn-default" Text="Post" Visible="False" Width="100px" />
@@ -45,7 +53,7 @@
             <hr />  
 
             <p class="text-center">
-                <asp:Button ID="LogoutBtn" runat="server" CssClass="btn btn-primary btn-lg" Text="Logout" Visible="False" />
+                <asp:ImageButton ID="LogoutBtn1" runat="server" ImageUrl="~/Content/Logout.png" Visible="False" />
             </p>
         </div>        
     </div>        

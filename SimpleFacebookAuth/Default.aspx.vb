@@ -26,20 +26,20 @@ Public Class _Default
         'Testing if User gained access from previous login attempt
         If Not Session("Authenticated") Is Nothing Then
             'Set logging off button visible
-            LogoutBtn.Visible = CType(Session.Item("Authenticated"), Boolean)
+            LogoutBtn1.Visible = CType(Session.Item("Authenticated"), Boolean)
         End If
 
     End Sub
 
-    Protected Sub LoginBtn_Click(sender As Object, e As EventArgs) Handles LoginBtn.Click
+    Protected Sub LoginBtn1_Click(sender As Object, e As ImageClickEventArgs) Handles LoginBtn1.Click
         Dim facebookAppId = ConfigurationManager.AppSettings("FacebookAppId").ToString()
         Dim extendedPermissions = ConfigurationManager.AppSettings("FacebookScope").ToString()
 
         'Use this line when publish to IIS
-        'Session("redirect_Uri") = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "/Authenticated_User.aspx"
+        Session("redirect_Uri") = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "/Authenticated_User.aspx"
 
         'Use this line when test locally with IIS express
-        Session("redirect_Uri") = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "Authenticated_User.aspx"
+        'Session("redirect_Uri") = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "Authenticated_User.aspx"
 
         'Response_type: an access token (token), an authorization code (code), or both (code token).
         'List of additional display modes can be found at http://developers.facebook.com/docs/reference/dialogs/#display
@@ -55,8 +55,7 @@ Public Class _Default
         Response.Redirect(uri.ToString())
     End Sub
 
-    Protected Sub LogoutBtn_Click(sender As Object, e As EventArgs) Handles LogoutBtn.Click
-
+    Protected Sub LogoutBtn1_Click(sender As Object, e As ImageClickEventArgs) Handles LogoutBtn1.Click
         'Cleaning temporary uploaded pictures from server
         If (Directory.GetFiles(Server.MapPath("~/Content/Pictures")).Length > 0) Then
             Array.ForEach(Directory.GetFiles(Server.MapPath("~/Content/Pictures")), Sub(x) File.Delete(x))
@@ -72,5 +71,4 @@ Public Class _Default
 
         Response.Redirect(logoutUrl.ToString())
     End Sub
-
 End Class

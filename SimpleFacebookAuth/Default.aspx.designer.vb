@@ -14,20 +14,20 @@ Option Explicit On
 Partial Public Class _Default
     
     '''<summary>
-    '''LoginBtn control.
+    '''LoginBtn1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LoginBtn As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents LoginBtn1 As Global.System.Web.UI.WebControls.ImageButton
     
     '''<summary>
-    '''LogoutBtn control.
+    '''LogoutBtn1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LogoutBtn As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents LogoutBtn1 As Global.System.Web.UI.WebControls.ImageButton
 End Class

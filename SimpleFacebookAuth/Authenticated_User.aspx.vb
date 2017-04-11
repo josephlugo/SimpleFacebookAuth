@@ -46,7 +46,7 @@ Public Class Authenticated_User
                     If oauthResult.IsSuccess Then
                         Session("Authenticated") = True
                         'Setting Logout button visible
-                        LogoutBtn.Visible = True
+                        LogoutBtn1.Visible = True
 
                         'Getting basic user info from Facebook
                         fb = New FacebookClient(CType(Session.Item("user_Access_Token"), String))
@@ -90,7 +90,7 @@ Public Class Authenticated_User
                         'User was not authenticated
                         Session("Authenticated") = False
                         'Setting Logout button hidden
-                        LogoutBtn.Visible = False
+                        LogoutBtn1.Visible = False
                         HidePageDetails()
                     End If
 
@@ -130,26 +130,41 @@ Public Class Authenticated_User
 
     Protected Sub PostBtn_Click(sender As Object, e As EventArgs) Handles PostBtn.Click
 
-        Dim photoPath As String = Nothing
+        Try
+            If Not (String.IsNullOrEmpty(lbStatus.Text) And Not FileUpload1.HasFile) Then
 
-        If (FileUpload1.HasFile) Then
+                Dim photoPath As String = Nothing
 
-            'Saving the photo to upload temporarily in /Content/Pictures
-            photoPath = Path.Combine(Server.MapPath("~/Content/Pictures"), FileUpload1.FileName)
-            FileUpload1.SaveAs(photoPath)
+                If (FileUpload1.HasFile) Then
 
-        End If
+                    'Saving the photo to upload temporarily in /Content/Pictures
+                    photoPath = Path.Combine(Server.MapPath("~/Content/Pictures"), FileUpload1.FileName)
+                    FileUpload1.SaveAs(photoPath)
 
-        'Check if user select to Publish both status and picture
-        If Not (String.IsNullOrEmpty(lbStatus.Text) Or String.IsNullOrEmpty(photoPath)) Then
-            PostStatusWithPhoto(CType(Session.Item("user_Access_Token"), String), lbStatus.Text, photoPath)
-            'If user select just to publish status    
-        ElseIf (String.IsNullOrEmpty(photoPath)) Then
-            PostOnlyStatus(CType(Session.Item("user_Access_Token"), String), lbStatus.Text)
-            'If user select just to publish photo
-        ElseIf (String.IsNullOrEmpty(lbStatus.Text)) Then
-            PostOnlyPhoto(CType(Session.Item("user_Access_Token"), String), photoPath)
-        End If
+                End If
+
+                'Check if user select to Publish both status and picture
+                If Not (String.IsNullOrEmpty(lbStatus.Text) Or String.IsNullOrEmpty(photoPath)) Then
+                    PostStatusWithPhoto(CType(Session.Item("user_Access_Token"), String), lbStatus.Text, photoPath)
+                    'If user select just to publish status    
+                ElseIf (String.IsNullOrEmpty(photoPath)) Then
+                    PostOnlyStatus(CType(Session.Item("user_Access_Token"), String), lbStatus.Text)
+                    'If user select just to publish photo
+                ElseIf (String.IsNullOrEmpty(lbStatus.Text)) Then
+                    PostOnlyPhoto(CType(Session.Item("user_Access_Token"), String), photoPath)
+                End If
+
+                lbStatus.Text = Nothing
+
+                Response.Write("<script>alert('Posted to your wall!');</script>")
+
+            Else
+                Response.Write("<script>alert('Hey, you are not posting something!');</script>")
+            End If
+
+        Catch ex As Exception
+            Response.Write("<script>alert('" + ex.Message + "');</script>")
+        End Try
 
     End Sub
 
@@ -194,8 +209,7 @@ Public Class Authenticated_User
 
     End Sub
 
-    Protected Sub LogoutBtn_Click(sender As Object, e As EventArgs) Handles LogoutBtn.Click
-
+    Protected Sub LogoutBtn1_Click(sender As Object, e As ImageClickEventArgs) Handles LogoutBtn1.Click
         'Cleaning temporary uploaded pictures from server
         If (Directory.GetFiles(Server.MapPath("~/Content/Pictures")).Length > 0) Then
             Array.ForEach(Directory.GetFiles(Server.MapPath("~/Content/Pictures")), Sub(x) File.Delete(x))
@@ -210,7 +224,5 @@ Public Class Authenticated_User
         Session("Authenticated") = False
 
         Response.Redirect(logoutUrl.ToString())
-
     End Sub
-
 End Class

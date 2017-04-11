@@ -41,3 +41,9 @@ textarea {
   text-align: center;
 }
 
+/*File Upload component margin*/
+ .fileUploadMargin {
+     margin-left:auto;
+     margin-right:auto;
+  }
+
