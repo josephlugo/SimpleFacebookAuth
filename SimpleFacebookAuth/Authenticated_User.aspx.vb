@@ -133,25 +133,29 @@ Public Class Authenticated_User
         Try
             If Not (String.IsNullOrEmpty(lbStatus.Text) And Not FileUpload1.HasFile) Then
 
-                Dim photoPath As String = Nothing
+                Dim photoList As New List(Of String)
+                Dim index As Integer = 0
 
                 If (FileUpload1.HasFile) Then
 
-                    'Saving the photo to upload temporarily in /Content/Pictures
-                    photoPath = Path.Combine(Server.MapPath("~/Content/Pictures"), FileUpload1.FileName)
-                    FileUpload1.SaveAs(photoPath)
+                    'Saving the photo(s) to upload temporarily in /Content/Pictures
+                    For Each file As HttpPostedFile In FileUpload1.PostedFiles
+                        photoList.Add(Path.Combine(Server.MapPath("~/Content/Pictures"), file.FileName))
+                        file.SaveAs(photoList(index))
+                        index += 1
+                    Next
 
                 End If
 
-                'Check if user select to Publish both status and picture
-                If Not (String.IsNullOrEmpty(lbStatus.Text) Or String.IsNullOrEmpty(photoPath)) Then
-                    PostStatusWithPhoto(CType(Session.Item("user_Access_Token"), String), lbStatus.Text, photoPath)
-                    'If user select just to publish status    
-                ElseIf (String.IsNullOrEmpty(photoPath)) Then
-                    PostOnlyStatus(CType(Session.Item("user_Access_Token"), String), lbStatus.Text)
-                    'If user select just to publish photo
+                'Check if user wants to publish both status and pictures
+                If Not (String.IsNullOrEmpty(lbStatus.Text) Or photoList.Count = 0) Then
+                    PostStatusWithPictures(CType(Session.Item("user_Access_Token"), String), lbStatus.Text, photoList)
+                    'If user wants just to publish status
+                ElseIf (photoList.Count = 0) Then
+                    PostStatus(CType(Session.Item("user_Access_Token"), String), lbStatus.Text)
+                    'If user wants just to publish pictures
                 ElseIf (String.IsNullOrEmpty(lbStatus.Text)) Then
-                    PostOnlyPhoto(CType(Session.Item("user_Access_Token"), String), photoPath)
+                    PostPictures(CType(Session.Item("user_Access_Token"), String), photoList)
                 End If
 
                 lbStatus.Text = Nothing
@@ -168,7 +172,27 @@ Public Class Authenticated_User
 
     End Sub
 
-    Private Sub PostOnlyStatus(accessToken As String, status As String)
+    Private Sub PostStatusWithPictures(accessToken As String, status As String, photoList As List(Of String))
+
+        fb = New FacebookClient(accessToken)
+
+        For Each photoPath In photoList
+
+            Using stream = File.OpenRead(photoPath)
+                fb.Post("me/photos", New With {
+                    Key .message = status,
+                    Key .file = New FacebookMediaStream() With {
+                        .ContentType = "image/jpg",
+                        .FileName = Path.GetFileName(photoPath)
+                    }.SetValue(stream)
+                })
+            End Using
+
+        Next
+
+    End Sub
+
+    Private Sub PostStatus(accessToken As String, status As String)
 
         fb = New FacebookClient(accessToken)
 
@@ -178,34 +202,22 @@ Public Class Authenticated_User
 
     End Sub
 
-    Private Sub PostOnlyPhoto(accessToken As String, photoPath As String)
+
+    Private Sub PostPictures(accessToken As String, photoList As List(Of String))
 
         fb = New FacebookClient(accessToken)
 
-        Using stream = File.OpenRead(photoPath)
-            fb.Post("me/photos", New With {
+        For Each photoPath In photoList
+
+            Using stream = File.OpenRead(photoPath)
+                fb.Post("me/photos", New With {
                 Key .file = New FacebookMediaStream() With {
                     .ContentType = "image/jpg",
                     .FileName = Path.GetFileName(photoPath)
                 }.SetValue(stream)
             })
-        End Using
-
-    End Sub
-
-    Private Sub PostStatusWithPhoto(accessToken As String, status As String, photoPath As String)
-
-        fb = New FacebookClient(accessToken)
-
-        Using stream = File.OpenRead(photoPath)
-            fb.Post("me/photos", New With {
-                Key .message = status,
-                Key .file = New FacebookMediaStream() With {
-                    .ContentType = "image/jpg",
-                    .FileName = Path.GetFileName(photoPath)
-                }.SetValue(stream)
-            })
-        End Using
+            End Using
+        Next
 
     End Sub
 

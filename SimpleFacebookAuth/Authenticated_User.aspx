@@ -38,7 +38,7 @@
              </p>  
 
              <p class="text-center">                                  
-                 <asp:FileUpload ID="FileUpload1" runat="server" CssClass="btn btn-default fileUploadMargin"/>
+                 <asp:FileUpload ID="FileUpload1" runat="server" CssClass="btn btn-default fileUploadMargin" AllowMultiple="True"/>
              </p>  
            
 
