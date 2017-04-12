@@ -39,6 +39,10 @@
 
              <p class="text-center">                                  
                  <asp:FileUpload ID="FileUpload1" runat="server" CssClass="btn btn-default fileUploadMargin" AllowMultiple="True"/>
+                 <asp:RegularExpressionValidator ID="regexValidator" runat="server"
+                    ControlToValidate="FileUpload1"
+                    ErrorMessage="Only JPEG images allowed." 
+                    ValidationExpression="(.*\.([Jj][Pp][Gg])|.*\.([Jj][Pp][Ee][Gg])$)" ForeColor="#CC3300"></asp:RegularExpressionValidator>
              </p>  
            
 

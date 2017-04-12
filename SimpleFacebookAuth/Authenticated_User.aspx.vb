@@ -131,6 +131,7 @@ Public Class Authenticated_User
     Protected Sub PostBtn_Click(sender As Object, e As EventArgs) Handles PostBtn.Click
 
         Try
+
             If Not (String.IsNullOrEmpty(lbStatus.Text) And Not FileUpload1.HasFile) Then
 
                 Dim photoList As New List(Of String)

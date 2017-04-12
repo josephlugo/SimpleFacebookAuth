@@ -86,6 +86,15 @@ Partial Public Class Authenticated_User
     Protected WithEvents FileUpload1 As Global.System.Web.UI.WebControls.FileUpload
     
     '''<summary>
+    '''regexValidator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents regexValidator As Global.System.Web.UI.WebControls.RegularExpressionValidator
+    
+    '''<summary>
     '''PostBtn control.
     '''</summary>
     '''<remarks>
