@@ -4,8 +4,8 @@
 
     <div class="jumbotron">
         <h1 style="font-size: xx-large"><strong>Simple Facebook Authentication</strong></h1>
-        <p class="lead" style="font-size: medium">A template application for Facebook authentication flow. Once logged in, the user can see its basic personal data such as name, email and profile picture.</p>
-        <p class="lead" style="font-size: medium">You can also post your status uploading photos to your wall!</p>        
+        <p class="lead" style="font-size: medium">A template application for Facebook authentication flow. Once logged in, you can see your basic personal data such as name, email and profile picture.</p>
+        <p class="lead" style="font-size: medium">You can also post your status with picture to your wall!</p>        
         <p>
             <asp:ImageButton ID="LoginBtn1" runat="server" ImageUrl="~/Content/Login.png" />
         </p>            
