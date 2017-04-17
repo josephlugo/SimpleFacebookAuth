@@ -15,8 +15,22 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+    <style type="text/css">
+        .fb-like {
+            text-align: center;
+        }
+    </style>
+
 </head>
 <body>   
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=609451462594238";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -60,7 +74,7 @@
         </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
+            </asp:ContentPlaceHolder>            
             <hr />
             <footer>
                 <p class="text-center">&copy; <%: DateTime.Now.Year %> - Simple Facebook Authentication</p>
