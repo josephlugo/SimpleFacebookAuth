@@ -13,7 +13,27 @@
             <asp:ImageButton ID="LogoutBtn1" runat="server" ImageUrl="~/Content/Logout.png" Visible="False" />
         </p> 
     </div>   
-    
-    <div class="fb-like" data-href="http://d348070.mdc.edu/eauth/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>     
+
+    <div class="row">
+
+         <div class="col-md-4">
+          
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="social-like-container">
+                        
+                <div class="fb-like" data-href="http://yourwebsite.com/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>  
+
+            </div>
+
+        </div>
+
+         <div class="col-md-4">
+          
+        </div>
+
+    </div>
     
 </asp:Content>
