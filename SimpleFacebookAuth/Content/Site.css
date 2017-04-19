@@ -47,3 +47,10 @@ textarea {
      margin-right:auto;
   }
 
+ /*Center FB Like button*/
+ .social-like-container {
+    display: block;
+    width: 124px;
+    margin: auto;
+   
+ }
