@@ -56,7 +56,7 @@ Public Class _Default
     End Sub
 
     Protected Sub LogoutBtn1_Click(sender As Object, e As ImageClickEventArgs) Handles LogoutBtn1.Click
-        'Cleaning temporary uploaded pictures from server
+        'Cleaning up temporary uploaded pictures from server.
         If (Directory.GetFiles(Server.MapPath("~/Content/Pictures")).Length > 0) Then
             Array.ForEach(Directory.GetFiles(Server.MapPath("~/Content/Pictures")), Sub(x) File.Delete(x))
         End If
