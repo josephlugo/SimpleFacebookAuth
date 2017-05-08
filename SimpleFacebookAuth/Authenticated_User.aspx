@@ -10,27 +10,27 @@
             </p>
     
             <p class="text-center">
-                <asp:Image ID="Image1" runat="server" Visible="False" />
+                <asp:Image ID="Image1" runat="server" Visible="False" TabIndex="1" />
             </p>   
         
             <p class="text-center">
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="Label1" runat="server" Text="Label" TabIndex="2"></asp:Label>
             </p>        
    
             <p class="text-center">
-                <asp:Label ID="Label2" runat="server" Text="Label" Visible="False"></asp:Label>
+                <asp:Label ID="Label2" runat="server" Text="Label" Visible="False" TabIndex="3"></asp:Label>
             </p>   
 
              <p class="text-center">
-                <asp:Label ID="Label4" runat="server" Text="Post something to your wall:" Visible="False" style="font-weight: 700"></asp:Label>
+                <asp:Label ID="Label4" runat="server" Text="Post something to your wall:" Visible="False" style="font-weight: 700" TabIndex="4"></asp:Label>
              </p>  
 
              <p class="text-center">
-                <asp:TextBox ID="lbStatus" runat="server" Height="69px" Visible="False" Width="279px" TextMode="MultiLine"></asp:TextBox>
+                <asp:TextBox ID="lbStatus" runat="server" Height="69px" Visible="False" Width="279px" TextMode="MultiLine" TabIndex="5"></asp:TextBox>
              </p>
 
              <p class="text-center">                 
-                 <asp:Label ID="Label5" runat="server" Text="Photo: (8 Mb max)" style="font-weight: 700" Visible="False"></asp:Label>                                                                    
+                 <asp:Label ID="Label5" runat="server" Text="Photo: (8 Mb max)" style="font-weight: 700" Visible="False" TabIndex="6"></asp:Label>                                                                    
              </p>
               
              <p class="text-center">                 
@@ -38,11 +38,11 @@
              </p>  
 
              <p class="text-center">                                  
-                 <asp:FileUpload ID="FileUpload1" runat="server" CssClass="btn btn-default fileUploadMargin" AllowMultiple="True"/>
+                 <asp:FileUpload ID="FileUpload1" runat="server" CssClass="btn btn-default fileUploadMargin" AllowMultiple="True" TabIndex="7"/>
                  <asp:RegularExpressionValidator ID="regexValidator" runat="server"
                     ControlToValidate="FileUpload1"
                     ErrorMessage="Only JPEG images allowed." 
-                    ValidationExpression="(.*\.([Jj][Pp][Gg])|.*\.([Jj][Pp][Ee][Gg])$)" ForeColor="#CC3300"></asp:RegularExpressionValidator>
+                    ValidationExpression="(.*\.([Jj][Pp][Gg])|.*\.([Jj][Pp][Ee][Gg])$)" ForeColor="#CC3300" TabIndex="8"></asp:RegularExpressionValidator>
              </p>  
            
 
@@ -51,13 +51,13 @@
              </p> 
 
              <p class="text-center">
-                 <asp:Button ID="PostBtn" runat="server" CssClass="btn btn-default" Text="Post" Visible="False" Width="100px" />
+                 <asp:Button ID="PostBtn" runat="server" CssClass="btn btn-default" Text="Post" Visible="False" Width="100px" TabIndex="9" />
              </p> 
             
             <hr />  
 
             <p class="text-center">
-                <asp:ImageButton ID="LogoutBtn1" runat="server" ImageUrl="~/Content/Logout.png" Visible="False" />
+                <asp:ImageButton ID="LogoutBtn1" runat="server" ImageUrl="~/Content/Logout.png" Visible="False" AlternateText="Logout from the web application button" TabIndex="10" />
             </p>
         </div>        
     </div>        

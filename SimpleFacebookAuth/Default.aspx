@@ -7,10 +7,10 @@
         <p class="lead" style="font-size: medium" title="A template application for Facebook authentication flow. Once logged in, you can see your name, email and profile picture.">A template application for Facebook authentication flow. Once logged in, you can see your name, email and profile picture.</p>
         <p class="lead" style="font-size: medium" title="You can also post your status/pictures to your wall!">You can also post your status/pictures to your wall!</p>        
         <p>            
-             <asp:ImageButton ID="LoginBtn1" runat="server" ImageUrl="~/Content/Login.png" />
+             <asp:ImageButton ID="LoginBtn1" runat="server" ImageUrl="~/Content/Login.png" AlternateText="Login with Facebook button" />
         </p>            
         <p>
-            <asp:ImageButton ID="LogoutBtn1" runat="server" ImageUrl="~/Content/Logout.png" Visible="False" TabIndex="1" />
+            <asp:ImageButton ID="LogoutBtn1" runat="server" ImageUrl="~/Content/Logout.png" Visible="False" TabIndex="1" AlternateText="Logout from the web application button" />
         </p> 
     </div>   
 
