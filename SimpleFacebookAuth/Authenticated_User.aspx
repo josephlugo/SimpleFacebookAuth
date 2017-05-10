@@ -22,7 +22,7 @@
             </p>   
 
              <p class="text-center">
-                <asp:Label ID="Label4" runat="server" Text="Post something to your wall:" Visible="False" style="font-weight: 700" TabIndex="4"></asp:Label>
+                <asp:Label ID="Label4" runat="server" Text="Post something to your wall:" Visible="False" style="font-weight: 700" TabIndex="4" AssociatedControlID="lbStatus"></asp:Label>
              </p>  
 
              <p class="text-center">
