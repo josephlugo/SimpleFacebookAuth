@@ -1,5 +1,7 @@
 # Simple Facebook Authentication
-A basic Facebook authentication app built on ASP.Net, Web Forms and VB.Net using Facebook C# SDK
+A basic Facebook authentication app built on ASP.Net, Web Forms and VB.Net using Facebook C# SDK.
+
+Once logged in, you can see your name, email and profile picture. You can also post your status/pictures to your wall.
 
 ### Please read carefully before using the solution:
 
